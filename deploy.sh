@@ -33,4 +33,12 @@ create_symlink "$DOTFILES_DIR/tmux/.tmux.conf" "$HOME_DIR/.tmux.conf"
 # 2. Deploy zsh config
 create_symlink "$DOTFILES_DIR/zsh/.zshrc" "$HOME_DIR/.zshrc"
 
+# 3. Deploy Gemini guidelines
+GEMINI_DIR="$HOME_DIR/.gemini"
+if [ ! -d "$GEMINI_DIR" ]; then
+    echo "Creating directory: $GEMINI_DIR"
+    mkdir -p "$GEMINI_DIR"
+fi
+create_symlink "$DOTFILES_DIR/gemini/GEMINI.md" "$GEMINI_DIR/GEMINI.md"
+
 echo "Deployment complete!"

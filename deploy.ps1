@@ -45,4 +45,14 @@ $zshrc_link = Join-Path $home_dir ".zshrc"
 $zshrc_target = Join-Path $dotfiles_dir "zsh\.zshrc"
 Create-Symlink -Target $zshrc_target -Link $zshrc_link
 
+# 3. Deploy Gemini guidelines
+$gemini_dir = Join-Path $home_dir ".gemini"
+if (-not (Test-Path $gemini_dir)) {
+    Write-Host "Creating directory: $gemini_dir"
+    New-Item -ItemType Directory -Path $gemini_dir | Out-Null
+}
+$gemini_rules_link = Join-Path $gemini_dir "GEMINI.md"
+$gemini_rules_target = Join-Path $dotfiles_dir "gemini\GEMINI.md"
+Create-Symlink -Target $gemini_rules_target -Link $gemini_rules_link
+
 Write-Host "Deployment complete!" -ForegroundColor Green

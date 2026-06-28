@@ -15,6 +15,13 @@ call :CreateSymlink "%DOTFILES_DIR%\tmux\.tmux.conf" "%HOME_DIR%\.tmux.conf"
 :: 2. Deploy zsh config
 call :CreateSymlink "%DOTFILES_DIR%\zsh\.zshrc" "%HOME_DIR%\.zshrc"
 
+:: 3. Deploy Gemini guidelines
+if not exist "%HOME_DIR%\.gemini" (
+    echo Creating directory: %HOME_DIR%\.gemini
+    mkdir "%HOME_DIR%\.gemini"
+)
+call :CreateSymlink "%DOTFILES_DIR%\gemini\GEMINI.md" "%HOME_DIR%\.gemini\GEMINI.md"
+
 echo Deployment complete!
 goto :eof
 
